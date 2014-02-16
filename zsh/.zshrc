@@ -10,6 +10,8 @@ ZSH_THEME="blinks"
 # Aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias srczshrc="source ~/.zshrc"
+alias dev="~/Development"
 
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -24,5 +26,9 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
+
+# rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 
 source $ZSH/oh-my-zsh.sh
