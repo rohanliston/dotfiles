@@ -20,6 +20,7 @@ alias vup="vagrant up"
 alias vdown="vagrant suspend"
 alias vp="vagrant provision"
 alias vr="vagrant reload"
+alias vssh="vagrant ssh"
 
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
