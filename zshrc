@@ -13,6 +13,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias srczshrc="source ~/.zshrc"
 alias dev="~/Development"
 alias tunnelmeout="sshuttle -r rliston@mercury.it.swin.edu.au 0.0.0.0/0 -vv"
+alias mbt="~/Development/swinburne/mbt-driver-api"
 
 # Vagrant aliases
 alias vup="vagrant up"
