@@ -13,6 +13,13 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias srczshrc="source ~/.zshrc"
 alias dev="~/Development"
 alias tunnelmeout="sshuttle -r rliston@mercury.it.swin.edu.au 0.0.0.0/0 -vv"
+
+# Vagrant aliases
+alias vup="vagrant up"
+alias vdown="vagrant suspend"
+alias vp="vagrant provision"
+alias vr="vagrant reload"
+
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
