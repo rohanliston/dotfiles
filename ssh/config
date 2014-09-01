@@ -1,0 +1,4 @@
+Host github.com
+  ProxyCommand ssh -q rliston@mercury.it.swin.edu.au nc %h %p
+Host *
+  ForwardAgent yes
