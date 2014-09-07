@@ -42,3 +42,6 @@ export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 
 source $ZSH/oh-my-zsh.sh
+
+# added by travis gem
+[ -f /Users/rohan/.travis/travis.sh ] && source /Users/rohan/.travis/travis.sh
