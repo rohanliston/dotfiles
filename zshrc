@@ -14,6 +14,7 @@ alias srczshrc="source ~/.zshrc"
 alias dev="~/Development"
 alias tunnelmeout="sshuttle -r rliston@mercury.it.swin.edu.au 0.0.0.0/0 -vv"
 alias mbt="~/Development/swinburne/mbt-driver-api"
+alias sandbox="~/Development/sandbox"
 
 # Vagrant aliases
 alias vup="vagrant up"
