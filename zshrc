@@ -39,7 +39,7 @@ plugins=(git rails)
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 source $ZSH/oh-my-zsh.sh
 
