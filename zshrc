@@ -42,4 +42,4 @@ eval "$(rbenv init - zsh)"
 source $ZSH/oh-my-zsh.sh
 
 # added by travis gem
-[ -f /Users/rohan/.travis/travis.sh ] && source /Users/rohan/.travis/travis.sh
+#[ -f /Users/rohan/.travis/travis.sh ] && source /Users/rohan/.travis/travis.sh
