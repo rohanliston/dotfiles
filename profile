@@ -1,3 +1,3 @@
 export GOPATH=$HOME/Development/go_path
 
-xmodmap ~/.Xmodmap
+setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
