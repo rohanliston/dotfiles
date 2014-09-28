@@ -9,6 +9,7 @@ ZSH_THEME="rohan-blinks"
 
 # Aliases
 alias zshconfig="vim ~/.zshrc"
+alias zshprofile="vim ~/.profile"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias srczshrc="source ~/.zshrc"
 alias dev="~/Development"
