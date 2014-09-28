@@ -11,8 +11,11 @@ ZSH_THEME="rohan-blinks"
 alias zshconfig="vim ~/.zshrc"
 alias zshprofile="vim ~/.profile"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias srczshrc="source ~/.zshrc"
-alias dev="~/Development"
+alias srcall="source ~/.zshrc && source ~/.profile"
+alias dev="cd ~/Development"
+alias work="cd ~/Development/ssil"
+alias personal="cd ~/Development/personal"
+alias dotfiles="cd ~/.dotfiles"
 
 # Vagrant aliases
 alias vup="vagrant up"
