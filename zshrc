@@ -24,6 +24,9 @@ alias vp="vagrant provision"
 alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
+# Misc
+alias pissoff="ps -fC"
+
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
