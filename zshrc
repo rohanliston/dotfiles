@@ -16,6 +16,11 @@ alias dev="cd ~/Development"
 alias work="cd ~/Development/ssil"
 alias personal="cd ~/Development/personal"
 alias dotfiles="cd ~/.dotfiles"
+alias mbt="cd ~/Development/ssil/mbt/mbt-driver-api"
+alias internets="ping www.google.com"
+alias sagi="sudo apt-get install"
+alias sagu="sudo apt-get update"
+alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
 
 # Vagrant aliases
 alias vup="vagrant up"
@@ -49,3 +54,6 @@ source $ZSH/oh-my-zsh.sh
 
 # added by travis gem
 #[ -f /Users/rohan/.travis/travis.sh ] && source /Users/rohan/.travis/travis.sh
+
+# added by travis gem
+[ -f /home/rohan/.travis/travis.sh ] && source /home/rohan/.travis/travis.sh
