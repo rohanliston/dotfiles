@@ -1,4 +1,4 @@
-export GOPATH=$HOME/Development/go_path
+export GOPATH=$HOME/Development/gopath
 
 # Remap Caps Lock to Control
 setxkbmap -option ctrl:nocaps
