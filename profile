@@ -7,4 +7,4 @@ setxkbmap -option ctrl:nocaps
 xset r rate 250 40
 
 # Reset keyboard backlight on boot
-echo 0 >> /sys/class/leds/smc::kbd_backlight/brightness
+#echo 0 >> /sys/class/leds/smc::kbd_backlight/brightness
