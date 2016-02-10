@@ -8,19 +8,20 @@ export UPDATE_ZSH_DAYS=30
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git)
 
-# Aliases
+# Shell aliases
 alias zshconfig="vim ~/.zshrc"
 alias zshprofile="vim ~/.profile"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias srcall="source ~/.zshrc && source ~/.profile"
-alias dev="cd ~/Development"
-alias work="cd ~/Development/ssil"
-alias personal="cd ~/Development/personal"
-alias dotfiles="cd ~/.dotfiles"
-alias internets="ping www.google.com"
 alias sagi="sudo apt-get install"
 alias sagu="sudo apt-get update"
 alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
+alias pissoff="ps -fC"
+
+# Path aliases
+alias dev="cd ~/Development"
+alias personal="cd ~/Development/personal"
+alias dotfiles="cd ~/.dotfiles"
 
 # Vagrant aliases
 alias vup="vagrant up"
@@ -29,8 +30,11 @@ alias vp="vagrant provision"
 alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
-# Misc aliases
-alias pissoff="ps -fC"
+# App aliases
+alias treemap=ncdu
+
+# PATH
+export PATH=$PATH:$HOME/.local/bin
 
 # rbenv
 export PATH=$PATH:$HOME/.rbenv/bin
