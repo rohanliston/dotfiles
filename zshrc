@@ -6,7 +6,7 @@ DISABLE_CORRECTION="true"
 export UPDATE_ZSH_DAYS=30
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git rails)
+plugins=(git)
 
 # Aliases
 alias zshconfig="vim ~/.zshrc"
