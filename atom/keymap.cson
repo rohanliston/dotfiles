@@ -32,7 +32,8 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 'atom-workspace atom-text-editor':
+    # Fix dumb default cursor behaviour on Linux/Windows
     'ctrl-backspace': 'editor:delete-to-previous-word-boundary'
-    'ctrl-delete': 'editor:delete-to-next-word-boundary'
-    'ctrl-left': 'editor:move-to-previous-word-boundary'
-    'ctrl-right': 'editor:move-to-next-word-boundary'
+    'ctrl-delete':    'editor:delete-to-next-word-boundary'
+    'ctrl-left':      'editor:move-to-previous-word-boundary'
+    'ctrl-right':     'editor:move-to-next-word-boundary'
