@@ -47,6 +47,7 @@
 [merge]
     tool = vimdiff
 [push]
-	default = simple
+    default = simple
 [core]
-	editor = vim
+    editor = vim
+    ignorecase = false
