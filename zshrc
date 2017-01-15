@@ -1,5 +1,7 @@
 # ==[ Oh My ZSH Settings ]===================================================================
 
+ZSH=$HOME/.oh-my-zsh
+
 # Custom command prompt style
 ZSH_THEME="rohan-blinks"
 
@@ -13,7 +15,7 @@ plugins=(git github)
 export UPDATE_ZSH_DAYS=30
 
 # Pull in oh-my-zsh with above settings
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 
 # ==[ ZSH Settings ]=========================================================================
@@ -61,7 +63,7 @@ alias treemap=ncdu
 # ==[ Shell Helpers ]========================================================================
 
 # mkdir, cd into it: http://onethingwell.org/post/586977440/mkcd-improved
-function mkcd () {
+mkcd() {
     mkdir -p "$*"
     cd "$*"
 }
@@ -71,6 +73,38 @@ function mkcd () {
 
 export PATH=$PATH:$HOME/.rbenv/bin
 eval "$(rbenv init - zsh)"
+
+
+# ==[ Git ]==================================================================================
+
+# Git command tweaks/shortcuts
+git() {
+    # Make "git clone" recurse submodules and CD into directory afterwards
+    if [ "$1" = "clone" ] ; then
+        url=$2
+        reponame=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//')
+
+        /usr/bin/git clone --recurse-submodules $url $reponame
+
+        printf "\nChanging to directory %s\n" "$reponame"
+        cd $reponame
+    # Add "git clonefork" command for automatically setting upstream
+    # @TODO: Pass along target directory if present
+    elif [ "$1" = "clonefork" ] ; then
+        fork_url=$2
+        base_username=${3:-dstil}
+        subst="s/rohanliston/$base_username/"
+        upstream_url=$(echo $fork_url | sed -e $subst)
+
+        git clone $fork_url
+        git remote add upstream $upstream_url
+
+	printf "  origin:   %s\n" "$fork_url"
+        printf "  upstream: %s\n" "$upstream_url"
+    else
+        /usr/bin/git "$@"
+    fi
+}
 
 
 # ==[ Colours ]==============================================================================
