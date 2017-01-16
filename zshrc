@@ -45,8 +45,9 @@ alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to
 
 # Path aliases
 alias dev="cd ~/Development"
-alias proj="dev && cd dstil/serenity"
-alias personal="cd ~/Development/personal"
+alias dstil="dev && cd dstil"
+alias proj="dstil && cd serenity"
+alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
 
 # Vagrant aliases
