@@ -108,6 +108,21 @@ git() {
 }
 
 
+# ==[ Python ]===============================================================================
+
+# Pip command tweaks/shortcuts
+pip() {
+    # Always install pip packages with --user flag
+    if [ "$1" = "install" -o "$1" = "bundle" ]; then
+        cmd="$1"
+        shift
+        /usr/local/bin/pip $cmd --user $@
+    else
+        /usr/local/bin/pip $@
+    fi
+}
+
+
 # ==[ Colours ]==============================================================================
 
 # Colourised man pages: http://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
