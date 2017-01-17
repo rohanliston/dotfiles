@@ -38,7 +38,7 @@ export PATH=$PATH:$HOME/.local/bin
 # Shell aliases
 alias zshconfig="vim ~/.zshrc"
 alias zshprofile="vim ~/.profile"
-alias srcall="source ~/.zshrc && source ~/.profile"
+alias srcall="source ~/.zshrc && source ~/.profile && source ~/.zprofile"
 alias sagi="sudo apt install"
 alias sagu="sudo apt update"
 alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
@@ -60,7 +60,7 @@ alias vssh="vagrant ssh"
 # App aliases
 alias treemap=ncdu
 
-
+ 
 # ==[ Shell Helpers ]========================================================================
 
 # mkdir, cd into it: http://onethingwell.org/post/586977440/mkcd-improved
