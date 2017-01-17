@@ -69,6 +69,12 @@ mkcd() {
     cd "$*"
 }
 
+# wo == 'work on': https://coderwall.com/p/feoi0a/shell-cd-replacement
+wo() {
+  code_dir=~/Development
+  dir=$(find $code_dir -maxdepth 3 -type d | grep -i $* | grep -Ev Pods --max-count=1)
+  [[ -d $dir ]] && cd $dir
+}
 
 # ==[ Ruby ]=================================================================================
 
