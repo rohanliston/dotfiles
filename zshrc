@@ -138,6 +138,61 @@ man() {
     man "$@"
 }
 
+
+# ==[ AWS ]==================================================================================
+
+awsprofile() {
+    profile_name=$1
+
+    python << END
+import ConfigParser, os
+
+# Ensure desired profile name isn't "default"
+if "$profile_name" == "default":
+    print("Active profile is already 'default'")
+    exit(1)
+
+# Read credentials file
+credentials = ConfigParser.ConfigParser()
+credentials.readfp(open("$HOME/.aws/credentials"))
+
+# Read config file
+config = ConfigParser.ConfigParser()
+config.readfp(open("$HOME/.aws/config"))
+config_sections = [section.replace("profile ", "") for section in config.sections()]
+
+# Ensure profile exists
+if "$profile_name" not in credentials.sections() or "$profile_name" not in config_sections:
+    print("Profile '$profile_name' not found.")
+    print("Available profiles: " + config_sections.strip("[]"))
+    exit(1)
+
+# Extract credentials
+aws_access_key_id     = credentials.get("$profile_name", "aws_access_key_id")
+aws_secret_access_key = credentials.get("$profile_name", "aws_secret_access_key")
+
+# Extract config
+region = config.get("profile $profile_name", "region")
+output = config.get("profile $profile_name", "output")
+
+
+# Overwrite [default] sections with selected profile
+credentials.set("default", "aws_access_key_id",     aws_access_key_id)
+credentials.set("default", "aws_secret_access_key", aws_secret_access_key)
+config.set("default", "region", region)
+config.set("default", "output", output)
+
+with open("$HOME/.aws/credentials", "w") as credentials_file:
+    credentials.write(credentials_file)
+
+with open("$HOME/.aws/config", "w") as config_file:
+    config.write(config_file)
+
+print("Default AWS profile set to '$profile_name'")
+END
+}
+
+
 # ==[ Local Settings ]=======================================================================
 
 # use .zshrc.local for settings specific to one system
