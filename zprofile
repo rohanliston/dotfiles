@@ -1,8 +1,8 @@
 # ==[ MacBook  ]=============================================================================
 
 # Reset keyboard backlight on boot
-is_macbook=$(dmidecode -s system-product-name | grep MacbookPro)
-[[ (is_macbook) ]] && echo 0 > /sys/class/leds/smc::kbd_backlight/brightness
+#is_macbook=$(dmidecode -s system-product-name | grep MacbookPro)
+#[[ (is_macbook) ]] && echo 0 > /sys/class/leds/smc::kbd_backlight/brightness
 
 # ==[ Keyboard ]=============================================================================
 
