@@ -185,7 +185,6 @@ aws_secret_access_key = credentials.get("$profile_name", "aws_secret_access_key"
 region = config.get("profile $profile_name", "region")
 output = config.get("profile $profile_name", "output")
 
-
 # Overwrite [default] sections with selected profile
 credentials.set("default", "aws_access_key_id",     aws_access_key_id)
 credentials.set("default", "aws_secret_access_key", aws_secret_access_key)
