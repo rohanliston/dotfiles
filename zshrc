@@ -76,6 +76,10 @@ wo() {
   [[ -d $dir ]] && cd $dir
 }
 
+# Grep in history
+greph() { history | grep -i $1 }
+
+
 # ==[ Ruby ]=================================================================================
 
 export PATH=$PATH:$HOME/.rbenv/bin
