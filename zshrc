@@ -57,9 +57,6 @@ alias vp="vagrant provision"
 alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
-# App aliases
-alias treemap=ncdu
-
  
 # ==[ Shell Helpers ]========================================================================
 
@@ -201,6 +198,14 @@ with open("$HOME/.aws/config", "w") as config_file:
 print("Default AWS profile set to '$profile_name'")
 END
 }
+
+
+# ==[ OS-Specific Settings ]=================================================================
+
+case $(uname) in
+  'Linux')   source $HOME/.zshrc.ubuntu ;;
+  'Darwin')  source $HOME/.zshrc.osx ;;
+esac
 
 
 # ==[ Local Settings ]=======================================================================
