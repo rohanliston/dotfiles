@@ -23,6 +23,13 @@ brew install rcm
 rcup -df ~/.dotfiles
 ```
 
-## OS Branches
+## Local and OS-dependent config
 
-Platform-independent config is stored in the `master` branch. For os-specific configs/scripts/profiles, switch to one of the platform branches.
+Some files pull in additional 'suffixed' files to add configuration specific to one particular OS or machine. The convention is as follows:
+
+* `.filerc`: Common configuration that works across all OSs/machines
+* `.filerc.ubuntu`: Ubuntu-specific config
+* `.filerc.osx`: OSX-specific config
+* `.filerc.local`: Machine-specific config
+
+This _could_ be managed with platform branches to keep the home directory free of benign files intended for other OSs, but the above is easier to manage with the current level of complexity.
