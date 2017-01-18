@@ -9,7 +9,7 @@ ZSH_THEME="rohan-blinks"
 DISABLE_CORRECTION="true"
 
 # Custom plugins to load from ~/.oh-my-zsh/custom/plugins/
-plugins=(git github)
+plugins=(git rails github)
 
 # Oh my zsh update frequency (in days)
 export UPDATE_ZSH_DAYS=30
@@ -57,7 +57,7 @@ alias vp="vagrant provision"
 alias vr="vagrant reload"
 alias vssh="vagrant ssh"
 
- 
+
 # ==[ Shell Helpers ]========================================================================
 
 # mkdir, cd into it: http://onethingwell.org/post/586977440/mkcd-improved
@@ -85,37 +85,44 @@ eval "$(rbenv init - zsh)"
 
 # ==[ Git ]==================================================================================
 
+# Activate 'hub' alias as 'git'
+alias git=hub
+
 # Git command tweaks/shortcuts
 git() {
+    if [[ -e /usr/local/bin/hub ]]; then git_command="/usr/local/bin/hub"; else git_command="/usr/bin/git"; fi
+
     # Make "git clone" recurse submodules and CD into directory afterwards
-    if [ "$1" = "clone" ] ; then
+    if [[ $1 = "clone" ]] ; then
         url=$2
-        reponame=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//')
+	if [[ -n $url ]] ; then
+            reponame=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//')
 
-        /usr/bin/git clone --recurse-submodules $url $reponame
+            $git_command clone --recurse-submodules $url $reponame
 
-        printf "\nChanging to directory %s\n" "$reponame"
-        cd $reponame
+            printf "\nChanging to directory %s\n" "$reponame"
+            cd $reponame
+        else
+            $git_command clone
+        fi
     # Add "git clonefork" command for automatically setting upstream
     # @TODO: Pass along target directory if present
-    elif [ "$1" = "clonefork" ] ; then
+    elif [[ $1 = "clonefork" ]] ; then
         fork_url=$2
         base_username=${3:-dstil}
         subst="s/rohanliston/$base_username/"
         upstream_url=$(echo $fork_url | sed -e $subst)
 
+	# git clone using this function as opposed to $git_command
         git clone $fork_url
         git remote add upstream $upstream_url
 
 	printf "  origin:   %s\n" "$fork_url"
         printf "  upstream: %s\n" "$upstream_url"
     else
-        /usr/bin/git "$@"
+        $git_command $@
     fi
 }
-
-# Activate 'hub' alias as 'git'
-eval "$(hub alias -s)"
 
 
 # ==[ Python ]===============================================================================
