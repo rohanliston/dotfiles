@@ -42,6 +42,7 @@ alias srcall="source ~/.zshrc && source ~/.profile && source ~/.zprofile"
 alias sagi="sudo apt install"
 alias sagu="sudo apt update"
 alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
+alias sl="ls"
 
 # Path aliases
 alias dev="cd ~/Development"
