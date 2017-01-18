@@ -37,3 +37,10 @@
     'ctrl-delete':    'editor:delete-to-next-word-boundary'
     'ctrl-left':      'editor:move-to-previous-word-boundary'
     'ctrl-right':     'editor:move-to-next-word-boundary'
+
+'body':
+  # Fix dumb default tab ordering and make it logical again
+  'ctrl-tab ^ctrl': 'unset!'
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab ^ctrl': 'unset!'
+  'ctrl-shift-tab': 'pane:show-previous-item'
