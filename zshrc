@@ -223,6 +223,24 @@ print("Default AWS profile set to '$profile_name'")
 END
 }
 
+# AWS CLI enhancements:
+#   "aws console": Open the appropriate management console URL depending on the active profile
+aws() {
+    if [ "$1" = "console" ]; then
+        console_url=`python << END
+import configparser, os
+
+custom_config = configparser.ConfigParser()
+custom_config.readfp(open("$HOME/.aws/custom_config"))
+
+console_url = custom_config.get("default", "console_url")
+print(console_url)
+END`
+        [[ $? -eq 0 ]] && google-chrome $console_url
+    else
+        /usr/bin/aws $@
+    fi
+}
 
 # ==[ OS-Specific Settings ]=================================================================
 
