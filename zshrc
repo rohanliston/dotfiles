@@ -160,6 +160,7 @@ man() {
 
 # ==[ AWS ]==================================================================================
 
+# Quick switching between multiple AWS profiles
 awsprofile() {
     profile_name=$1
 
