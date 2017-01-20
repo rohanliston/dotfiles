@@ -48,6 +48,7 @@ alias sl="ls"
 alias dev="cd ~/Development"
 alias dstil="dev && cd dstil"
 alias proj="dstil && cd serenity"
+alias wk="dstil && cd wicketkeeper"
 alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
 
