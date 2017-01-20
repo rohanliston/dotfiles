@@ -164,7 +164,7 @@ awsprofile() {
     profile_name=$1
 
     python << END
-import ConfigParser, os
+import configparser, os
 
 # Ensure desired profile name isn't "default"
 if "$profile_name" == "default":
@@ -172,11 +172,11 @@ if "$profile_name" == "default":
     exit(1)
 
 # Read credentials file
-credentials = ConfigParser.ConfigParser()
+credentials = configparser.ConfigParser()
 credentials.readfp(open("$HOME/.aws/credentials"))
 
 # Read config file
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.readfp(open("$HOME/.aws/config"))
 config_sections = [section.replace("profile ", "") for section in config.sections()]
 
