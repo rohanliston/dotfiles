@@ -181,9 +181,14 @@ config = configparser.ConfigParser()
 config.readfp(open("$HOME/.aws/config"))
 config_sections = [section.replace("profile ", "") for section in config.sections()]
 
+# Read custom config file
+custom_config = configparser.ConfigParser()
+custom_config.readfp(open("$HOME/.aws/custom_config"))
+custom_config_sections = [section.replace("profile ", "") for section in custom_config.sections()]
+
 # Ensure profile exists
 if "$profile_name" not in credentials.sections() or "$profile_name" not in config_sections:
-    print("Profile '$profile_name' not found.")
+    print("Profile '$profile_name' not found or improperly defined.")
     print("Available profiles: " + config_sections.strip("[]"))
     exit(1)
 
@@ -195,17 +200,24 @@ aws_secret_access_key = credentials.get("$profile_name", "aws_secret_access_key"
 region = config.get("profile $profile_name", "region")
 output = config.get("profile $profile_name", "output")
 
+# Extract custom config
+console_url = custom_config.get("profile $profile_name", "console_url")
+
 # Overwrite [default] sections with selected profile
 credentials.set("default", "aws_access_key_id",     aws_access_key_id)
 credentials.set("default", "aws_secret_access_key", aws_secret_access_key)
 config.set("default", "region", region)
 config.set("default", "output", output)
+custom_config.set("default", "console_url", console_url)
 
 with open("$HOME/.aws/credentials", "w") as credentials_file:
     credentials.write(credentials_file)
 
 with open("$HOME/.aws/config", "w") as config_file:
     config.write(config_file)
+
+with open("$HOME/.aws/custom_config", "w") as custom_config_file:
+    custom_config.write(custom_config_file)
 
 print("Default AWS profile set to '$profile_name'")
 END
