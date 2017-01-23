@@ -51,6 +51,7 @@ alias proj="dstil && cd serenity"
 alias wk="dstil && cd wicketkeeper"
 alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
+alias dl="cd ~/Downloads"
 
 # Vagrant aliases
 alias vup="vagrant up"
