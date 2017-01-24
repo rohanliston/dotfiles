@@ -24,7 +24,7 @@ BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-key
 KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/']"
+"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4']"
 
 # Take a screenshot of the entire display
 $BEGINNING/custom0/ name "Screenshot Entire Screen"
@@ -45,6 +45,11 @@ $BEGINNING/custom2/ binding "<Alt><Shift>4"
 $BEGINNING/custom3/ name "Nautilus"
 $BEGINNING/custom3/ command "/usr/bin/nautilus --new-window"
 $BEGINNING/custom3/ binding "<Super>E"
+
+# Open up web browser
+$BEGINNING/custom3/ name "Chrome"
+$BEGINNING/custom3/ command "google-chrome"
+$BEGINNING/custom3/ binding "<Super>B"
 
 unsetopt shwordsplit
 
