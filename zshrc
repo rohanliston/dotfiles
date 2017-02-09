@@ -43,6 +43,7 @@ alias sagi="sudo apt install"
 alias sagu="sudo apt update"
 alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
 alias sl="ls"
+alias ls="/bin/ls --color=tty -F"
 
 # Path aliases
 alias dev="cd ~/Development"
