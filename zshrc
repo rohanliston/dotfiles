@@ -83,11 +83,6 @@ hgrep() { history | grep -i $1 }
 # Grep in pip packages
 pipgrep() { pip freeze | grep -i $1 }
 
-# ==[ Ruby ]=================================================================================
-
-export PATH=$PATH:$HOME/.rbenv/bin
-eval "$(rbenv init - zsh)"
-
 
 # ==[ Git ]==================================================================================
 
