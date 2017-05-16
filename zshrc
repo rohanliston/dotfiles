@@ -89,6 +89,9 @@ pipgrep() { pip freeze | grep -i $1 }
 # Activate 'hub' alias as 'git'
 alias git=hub
 
+# Check if branch exists remotely
+bgrep() { git branch -r | grep -i $1 }
+
 # Git command tweaks/shortcuts
 git() {
     if [[ -e /usr/local/bin/hub ]]; then git_command="/usr/local/bin/hub"; else git_command="/usr/bin/git"; fi
