@@ -9,7 +9,7 @@ ZSH_THEME="rohan-blinks"
 DISABLE_CORRECTION="true"
 
 # Custom plugins to load from ~/.oh-my-zsh/custom/plugins/
-plugins=(git rails github)
+plugins=(git github)
 
 # Oh my zsh update frequency (in days)
 export UPDATE_ZSH_DAYS=30
