@@ -17,7 +17,6 @@ export UPDATE_ZSH_DAYS=30
 # Pull in oh-my-zsh with above settings
 source $ZSH/oh-my-zsh.sh
 
-
 # ==[ ZSH Settings ]=========================================================================
 
 # Appends every command to the history file once it is executed
@@ -26,12 +25,10 @@ setopt inc_append_history
 # Reloads the history whenever you use it
 setopt share_history
 
-
 # ==[ PATH ]=================================================================================
 
 # Set paths
-export PATH=$PATH:$HOME/.local/bin:/opt/idea-IC-171.3780.107/bin:/opt/clion-2017.3/bin
-
+export PATH=$PATH:$HOME/.local/bin
 
 # ==[ Aliases ]==============================================================================
 
@@ -51,6 +48,8 @@ alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
 alias dl="cd ~/Downloads"
 
+# Git aliases
+alias gpum="git pull upstream master"
 
 # ==[ Shell Helpers ]========================================================================
 
@@ -71,25 +70,21 @@ wo() {
 hgrep() { history | grep -i $1 }
 
 # Grep in pip packages
-pipgrep() { pip freeze | grep -i $1 }
-
+pipgrep() { pip3 freeze | grep -i $1 }
 
 # ==[ Git ]==================================================================================
-
-# Activate 'hub' alias as 'git'
-alias git=hub
 
 # Check if branch exists remotely
 bgrep() { git branch -r | grep -i $1 }
 
 # Git command tweaks/shortcuts
-git() {
+function git {
     if [[ -e /usr/local/bin/hub ]]; then git_command="/usr/local/bin/hub"; else git_command="/usr/bin/git"; fi
 
     # Make "git clone" recurse submodules and CD into directory afterwards
     if [[ $1 = "clone" ]] ; then
         url=$2
-	if [[ -n $url ]] ; then
+	      if [[ -n $url ]] ; then
             reponame=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//')
 
             $git_command clone --recurse-submodules $url $reponame
@@ -118,7 +113,6 @@ git() {
     fi
 }
 
-
 # ==[ Python ]===============================================================================
 
 # Pip command tweaks/shortcuts
@@ -127,12 +121,11 @@ pip() {
     if [ "$1" = "install" -o "$1" = "bundle" ]; then
         cmd="$1"
         shift
-        /usr/local/bin/pip $cmd --user $@
+        pip3 $cmd --user $@
     else
-        /usr/local/bin/pip $@
+        pip3 $@
     fi
 }
-
 
 # ==[ Colours ]==============================================================================
 
@@ -149,96 +142,12 @@ man() {
     man "$@"
 }
 
-
-# ==[ AWS ]==================================================================================
-
-# Quick switching between multiple AWS profiles
-awsprofile() {
-    profile_name=$1
-
-    python << END
-import configparser, os
-
-# Ensure desired profile name isn't "default"
-if "$profile_name" == "default":
-    print("Active profile is already 'default'")
-    exit(1)
-
-# Read credentials file
-credentials = configparser.ConfigParser()
-credentials.readfp(open("$HOME/.aws/credentials"))
-
-# Read config file
-config = configparser.ConfigParser()
-config.readfp(open("$HOME/.aws/config"))
-
-# Read custom config file
-custom_config = configparser.ConfigParser()
-custom_config.readfp(open("$HOME/.aws/custom_config"))
-
-# Ensure profile exists
-if "$profile_name" not in credentials.sections() or "$profile_name" not in config.sections():
-    print("Profile '$profile_name' not found or improperly defined.")
-    print("Available profiles: " + config.sections().strip("[]"))
-    exit(1)
-
-# Extract credentials
-aws_access_key_id     = credentials.get("$profile_name", "aws_access_key_id")
-aws_secret_access_key = credentials.get("$profile_name", "aws_secret_access_key")
-
-# Extract config
-region = config.get("$profile_name", "region")
-output = config.get("$profile_name", "output")
-
-# Extract custom config
-console_url = custom_config.get("$profile_name", "console_url")
-
-# Overwrite [default] sections with selected profile
-credentials.set("default", "aws_access_key_id",     aws_access_key_id)
-credentials.set("default", "aws_secret_access_key", aws_secret_access_key)
-config.set("default", "region", region)
-config.set("default", "output", output)
-custom_config.set("default", "console_url", console_url)
-
-with open("$HOME/.aws/credentials", "w") as credentials_file:
-    credentials.write(credentials_file)
-
-with open("$HOME/.aws/config", "w") as config_file:
-    config.write(config_file)
-
-with open("$HOME/.aws/custom_config", "w") as custom_config_file:
-    custom_config.write(custom_config_file)
-
-print("Default AWS profile set to '$profile_name'")
-END
-}
-
-# AWS CLI enhancements:
-#   "aws console": Open the appropriate management console URL depending on the active profile
-aws() {
-    if [ "$1" = "console" ]; then
-        console_url=`python << END
-import configparser, os
-
-custom_config = configparser.ConfigParser()
-custom_config.readfp(open("$HOME/.aws/custom_config"))
-
-console_url = custom_config.get("default", "console_url")
-print(console_url)
-END`
-        [[ $? -eq 0 ]] && google-chrome $console_url
-    else
-        /usr/bin/aws $@
-    fi
-}
-
 # ==[ OS-Specific Settings ]=================================================================
 
 case $(uname) in
   'Linux')   source $HOME/.zshrc.ubuntu ;;
   'Darwin')  source $HOME/.zshrc.osx ;;
 esac
-
 
 # ==[ Local Settings ]=======================================================================
 

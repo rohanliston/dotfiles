@@ -1,18 +1,1 @@
-# ==[ MacBook  ]=============================================================================
-
-# Reset keyboard backlight on boot
-#is_macbook=$(dmidecode -s system-product-name | grep MacbookPro)
-#[[ (is_macbook) ]] && echo 0 > /sys/class/leds/smc::kbd_backlight/brightness
-
-
-# ==[ Keyboard ]=============================================================================
-
-# Set keybaoard delay and repeat
-xset r rate 250 40
-
-
-# ==[ Key Bindings (xkb) ]===================================================================
-
-# Remap Caps Lock to Control
-setxkbmap -option ctrl:nocaps
 
