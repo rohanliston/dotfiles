@@ -33,8 +33,8 @@ export PATH=$PATH:$HOME/.local/bin
 # ==[ Aliases ]==============================================================================
 
 # Shell aliases
-alias zshrc="vim ~/.zshrc"
-alias zshprofile="vim ~/.zprofile"
+alias zshrc="vim ~/.dotfiles/zshrc"
+alias zprofile="vim ~/.dotfiles/zprofile"
 alias sagi="sudo apt install"
 alias sagu="sudo apt update"
 alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
