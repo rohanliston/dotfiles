@@ -28,7 +28,7 @@ setopt share_history
 # ==[ PATH ]=================================================================================
 
 # Set paths
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.poetry/bin
 
 # ==[ Aliases ]==============================================================================
 
