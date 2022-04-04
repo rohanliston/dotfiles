@@ -47,6 +47,10 @@ alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
 alias dl="cd ~/Downloads"
 
+# AWS/Amplify aliases
+alias am="amplify mock"
+alias rmam="rm -rf ./amplify/mock-data"
+
 # ==[ Shell Helpers ]========================================================================
 
 # mkdir, cd into it
