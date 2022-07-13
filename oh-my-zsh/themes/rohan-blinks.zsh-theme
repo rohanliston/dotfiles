@@ -6,7 +6,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
 
 PROMPT='%{%f%k%b%}
-%{%K{${bkg}}%B%F{green}%}%n%{%B%F{blue}%}@%{%B%F{cyan}%}%m%{%B%F{green}%} %{%b%F{yellow}%K{${bkg}}%}%~%{%B%F{green}%}$(git_prompt_info)%E%{%f%k%b%}
+%{%K{${bkg}}%B%F{green}%}%D{%H:%M:%S}%{%B%F{blue}%} %{%b%F{yellow}%K{${bkg}}%}%~%{%B%F{green}%}$(git_prompt_info)%E%{%f%k%b%}
 %{%K{${bkg}}%} ${ret_status}%{%K{${bkg}}%}%{%f%k%b%} '
 
-# RPROMPT='!%{%B%F{cyan}%}%!%{%f%k%b%}'
+RPROMPT=''#!%{%B%F{cyan}%}%!%{%f%k%b%}
