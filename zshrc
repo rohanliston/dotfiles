@@ -25,6 +25,9 @@ setopt inc_append_history
 # Reloads the history whenever you use it
 setopt share_history
 
+# Disable auto cd (allows you to cd into directory without using cd command)
+unsetopt auto_cd
+
 # ==[ PATH ]=================================================================================
 
 # Set paths
