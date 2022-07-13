@@ -50,9 +50,10 @@ alias personal="dev && cd personal"
 alias dotfiles="cd ~/.dotfiles"
 alias dl="cd ~/Downloads"
 
-# AWS/Amplify aliases
-alias am="amplify mock"
+# Amplify aliases
+alias am="npm run amplify -- mock"
 alias rmam="rm -rf ./amplify/mock-data"
+alias amplify="npm run amplify --"
 
 # ==[ Shell Helpers ]========================================================================
 
