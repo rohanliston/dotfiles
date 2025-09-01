@@ -31,29 +31,28 @@ unsetopt auto_cd
 # ==[ PATH ]=================================================================================
 
 # Set paths
-export PATH=$PATH:$HOME/.local/bin:$HOME/.poetry/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # ==[ Aliases ]==============================================================================
 
-# Shell aliases
+# Quick-edit ZSH config and dotfiles
 alias zshrc="vim ~/.dotfiles/zshrc"
 alias zprofile="vim ~/.dotfiles/zprofile"
+alias dotfiles="cursor ~/.dotfiles"
+
+# Shorthand apt commands
 alias sagi="sudo apt install"
 alias sagu="sudo apt update"
-alias pk="xclip -sel clip < ~/.ssh/id_rsa.pub -f && echo '\nPublic key copied to clipboard.'"
+
+# Colourise ls with directory markers
 alias ls="/bin/ls --color=tty -F"
+
+# Common misspellings
 alias sl="ls"
 
-# Path aliases
+# Shorthand for navigating to common directories
 alias dev="cd ~/Development"
-alias personal="dev && cd personal"
-alias dotfiles="cd ~/.dotfiles"
 alias dl="cd ~/Downloads"
-
-# Amplify aliases
-alias am="npm run amplify -- mock"
-alias rmam="rm -rf ./amplify/mock-data"
-alias amplify="npm run amplify --"
 
 # ==[ Shell Helpers ]========================================================================
 
@@ -72,9 +71,6 @@ wo() {
 
 # Grep in history
 hgrep() { history | grep -i $1 }
-
-# Grep in pip packages
-pipgrep() { pip3 freeze | grep -i $1 }
 
 # ==[ Git ]==================================================================================
 
@@ -96,16 +92,7 @@ man() {
     man "$@"
 }
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # ==[ Local Settings ]=======================================================================
 
-# use .zshrc.local for settings specific to one system
+# Use .zshrc.local for settings specific to one system
 [[ -f "${HOME}/.zshrc.local" ]] && . "${HOME}/.zshrc.local"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
